@@ -51,4 +51,3 @@ python3 manage.py runserver 0.0.0.0:8000
 ├── README.md
 └── script_init_django.sh
 ```
-# Projet-sites-bachelor
