@@ -13,7 +13,7 @@
                 link.id = 'fieldsetcollapser' + i;
                 link.className = 'collapse-toggle';
                 link.href = '#';
-                link.textContent = gettext('Show');
+                // link.textContent = gettext('Show');
                 h2.appendChild(document.createTextNode(' ('));
                 h2.appendChild(link);
                 h2.appendChild(document.createTextNode(')'));
@@ -27,11 +27,11 @@
                 const fieldset = ev.target.closest('fieldset');
                 if (fieldset.classList.contains('collapsed')) {
                     // Show
-                    ev.target.textContent = gettext('Hide');
+                    // ev.target.textContent = gettext('Hide');
                     fieldset.classList.remove('collapsed');
                 } else {
                     // Hide
-                    ev.target.textContent = gettext('Show');
+                    // ev.target.textContent = gettext('Show');
                     fieldset.classList.add('collapsed');
                 }
             }
