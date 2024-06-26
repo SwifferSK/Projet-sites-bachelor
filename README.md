@@ -4,7 +4,7 @@
 ```bat
 git clone https://github.com/DBXYD/2324_Bachelor_Django_Base.git
 cd 2324_Bachelor_Django_Base/django_project/
-python3 manage.py runserver 0.0.0.0:8000
+python3 manage.py runserver 0.0.0.0:8000 or python3 manage.py runserver 127.0.0.1:8000 if previous command failed.
 ```
 ## File tree structure
 ```bat

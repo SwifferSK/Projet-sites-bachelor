@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Projet</title>
+        <title>{{project.title}}</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -18,9 +18,19 @@
     </head>
     <body id="page-top">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" >
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">Projet</a>
+                <button class="navbar-toggler navbar-toggler-right" role="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#navbarProject" aria-controls="navbarProject">
+                    Projets
+                </button>
+                <div class="collapse navbar-collapse" id="navbarProject">
+                    <ul class="navbar-nav ms-auto">
+                        {% for proj in projects %}
+                            <li class="nav-item"><a class="nav-link" href="../{{proj.slug}}">{{proj.title}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -39,8 +49,8 @@
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div class="d-flex justify-content-center">
                     <div class="text-center">
-                        <h1 class="mx-auto my-0 text-uppercase">La boule de cristal environnementale </h1>
-                        <h2 class="text-white-50 mx-auto mt-2 mb-5">Un projet d'Emire réalisé pour le thème "Moi , Cyborg?!".</h2>
+                        <h1 class="mx-auto my-0 text-uppercase"> {{project.title}} </h1>
+                        <h2 class="text-white-50 mx-auto mt-2 mb-5">Un projet réalisé par {{project.author}} pour le thème<br>"Moi , Cyborg?!".</h2>
                         <a class="btn btn-primary" href="#about">Commencer</a>
                     </div>
                 </div>
@@ -53,11 +63,7 @@
                     <div class="col-lg-8">
                         <h2 class="text-white mb-4">Description</h2>
                         <p class="text-white-50">
-                            
-Une boule contenant un arbre de vie, munie d'un écran posant des questions et de boutons OUI/ NON pour y répondre. Une majorité de réponses positives permettent alors d'actionner une horlorge.
-
-
-                            
+                            {{project.text_description}}
                         </p>
                     </div>
                 </div>
@@ -73,8 +79,9 @@ Une boule contenant un arbre de vie, munie d'un écran posant des questions et d
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
                             <h4>Explication</h4>
-                            <p class="text-black-50 mb-0">La boule de cristal contient un arbre de vie sous la forme du yin et du yang. Le symbole du yin et du yang dérive du taoïsme. Il fait donc référence à un équilibre. L'arbre de vie : Symbolisant la sagesse suprême, il est le plus à même de prédire l'avenir. Présent depuis des millénaires dans certaines cultures et depuis la nuit des temps si l'on en croit certaines religions, il est le centre, l'origine, il est celui avec quoi tout a commencé. Il connait le passé et pourrait prédire l'avenir.
-                          À la base de la boule on peut voir une horloge immobile. Symbole du temps figé. Elle est dans l'attente des décisions de l'homme. Ce sont les décisions prises par l'homme qui feront pencher la balance ; ce qui fait pencher la balance c'est la gravité des décisions que l'on prend. <br>Ainsi, la balance penchant d'un côté représente la reprise de la vie avec le temps qui repart; là ou, si elle balance de l'autre côté, le temps figé symbolise la mort de l'environnement.</p>
+                            <p class="text-black-50 mb-0">
+                                {{project.text_explication}}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -137,7 +144,7 @@ Une boule contenant un arbre de vie, munie d'un écran posant des questions et d
                                 <i class="fas fa-map-marked-alt text-primary mb-2"></i>
                                 <h4 class="text-uppercase m-0">Linkedin</h4>
                                 <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50"><a href="https://www.linkedin.com/in/emire-guiose-0436252ba/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3ByzUFbn4mQNCpruCI3DAhYg%3D%3D">Emire GUIOSE</a></div>
+                                <div class="small text-black-50"> <a href="https://www.linkedin.com/in/{{ project.linkedin }}">{{ project.author }}</a></div>
                             </div>
                         </div>
                     </div>
@@ -148,7 +155,7 @@ Une boule contenant un arbre de vie, munie d'un écran posant des questions et d
                                 <h4 class="text-uppercase m-0">email</h4>
                                 <hr class="my-4 mx-auto" />
                                 <!-- Shouldn't it be something like href="mailto:addr@op.com" ? -->
-                                <div class="small text-black-50"><a href="https://www.google.com/intl/fr/gmail/about/">Emire Guiose</a></div>
+                                <div class="small text-black-50"><a href="mailto:{{project.author.email}}">{{project.author.email}}</a></div>
                             </div>
                         </div>
                     </div>
@@ -158,7 +165,7 @@ Une boule contenant un arbre de vie, munie d'un écran posant des questions et d
                                 <i class="fas fa-mobile-alt text-primary mb-2"></i>
                                 <h4 class="text-uppercase m-0">téléphone</h4>
                                 <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50">07 68 03 77 30</div>
+                                <div class="small text-black-50"><a href = "tel:{{project.phone}}" >{{project.phone}} </a></div>
                             </div>
                         </div>
                     </div>
@@ -171,7 +178,6 @@ Une boule contenant un arbre de vie, munie d'un écran posant des questions et d
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
